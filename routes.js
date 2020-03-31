@@ -30,9 +30,7 @@ routes.post('/comanda', function(req, res){
         pdf.push(comandas.slice(i,i+acord))
        }
 
-     console.log(pdf)
 
-       let cont = 0
     return res.render("comanda.njk", {comandas, pdf})
     
 })

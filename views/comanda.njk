@@ -1,44 +1,77 @@
-
-
 {%for coluna in pdf %}
     <table>
-        <tr> 
-         {% for comanda in coluna %}
-                 <table width="630" border="1" bordercolor="#000000" style="border-collapse: collapse; display: inline-block;"  cellspacing="0" cellpadding="0">
-              
         <tr>
-                    <td height="470" width="50%" align="center" valign="middle">
-                        <img src="../logo.png" border="0" height="180px"><br />
-                        <span style="font-family: Arial; font-size: 80px;"><b>{{comanda}}</b></span> <br />
-                        <img src="https://www.invertexto.com/image.php?scale=3&rotation=0&font=arial&font_size=0&text={{comanda}}&thickness=30&code=code39" alt="">
-                        <span style="font-family: Verdana;font-size: 14px;display: block;text-align: center;"> www.<strong>seatec</strong>.com.br</span>
-                    </td>
-                    <td height="470" width="50%" align="left" valign="top" style="padding: 20px;">
-                <center><span style="font-family: Arial; font-size: 20px;"><b>Agradecemos a Preferência</b></span></center><br /><br />
-                <span style="font-family: Arial; font-size: 16px;"><b>&bull; Utilize esta ficha para seus pedidos em cada setor.</b></span><br /><br />
-                <span style="font-family: Arial; font-size: 16px;"><b>&bull; Após finalizar suas compras entregue-a ao caixa para a soma total de suas despesas.</b></span><br /><br />
-                <span style="font-family: Arial; font-size: 16px;"><b>&bull; Mesmo que não a tenha utilizado, devolva-a na saída.</b></span><br /><br />
-                <span style="font-family: Arial; font-size: 16px;"><b>&bull; Em caso de extravio ou danos na ficha, será cobrada uma taxa imposta pela gerência.</b></span><br /><br /><br />
-                <center><span style="font-family: Verdana; font-size: 28px;"><b>Volte Sempre!</b></span></center>
+            {% for comanda in coluna %}
+                <td>
+                    <table width="500" border="1" bordercolor="#000000" style="border-collapse: collapse; display: inline-block;"  cellspacing="0" cellpadding="0">
+
+                        <tr>
+                            <td height="470" width="50%" align="center" valign="middle">
+                                <img src="../logo.png" border="0" height="150px"><br/>
+                                <span style="font-family: Arial; font-size: 70px;">
+                                    <b>{{comanda}}</b>
+                                </span>
+                                <br/>
+                                <img src="https://www.invertexto.com/image.php?scale=3&rotation=0&font=arial&font_size=0&text={{comanda}}&thickness=30&code=code39" alt="">
+                                <span style="font-family: Verdana;font-size: 14px;display: block;text-align: center;"> www.<strong>seatec</strong>.com.br</span>
+                            </td>
+                            <td height="400" width="50%" align="left" valign="top" style="padding: 10px;">
+                                <center>
+                                    <span style="font-family: Arial; font-size: 18px;">
+                                        <b>Agradecemos a Preferência</b></span></center><br/><br/>
+                                <span style="font-family: Arial; font-size: 16px;">
+                                    <b>&bull; Utilize esta ficha para seus pedidos em cada setor.</b>
+                                </span><br/><br/>
+                                <span style="font-family: Arial; font-size: 16px;">
+                                    <b>&bull; Após finalizar suas compras entregue-a ao caixa para a soma total de suas despesas.</b>
+                                </span><br/><br/>
+                                <span style="font-family: Arial; font-size: 16px;">
+                                    <b>&bull; Mesmo que não a tenha utilizado, devolva-a na saída.</b>
+                                </span><br/><br/>
+                                <span style="font-family: Arial; font-size: 16px;">
+                                    <b>&bull; Em caso de extravio ou danos na ficha, será cobrada uma taxa imposta pela gerência.</b>
+                                </span><br/><br/><br/>
+                                <center>
+                                    <span style="font-family: Verdana; font-size: 28px;">
+                                        <b>Volte Sempre!</b></span></center>
+                            </td>
+                        </tr>
+
+                    </tr>
+                </table>
             </td>
-        </tr>
-                {% endfor %}
-                
-        </tr>
-    </table>
+        {% endfor %}
 
-               
-
- 
-
-         
-      
-        
-      
-   
+    </tr>
+</table>
 
 {%endfor%}
 
+<script>
 
+function calculaDigito(num) {   
+    var novoNum = num + '';
+    var multiplicador = 2;
+    var sumValores = 0;
 
+    for (i = novoNum.length; i > 0; i--) {
+        sumValores += novoNum.substr(i - 1, 1) * multiplicador;
+        multiplicador++;
+    }
 
+    sumValores = (sumValores * 10) % 11;
+    sumValores += -2;
+
+    if(sumValores < 0){
+        if(sumValores == -1){
+            sumValores = 0
+        }
+        if(sumValores == -2){
+            sumValores = 9
+        }
+    }
+
+ 
+    return sumValores
+}
+</script>
