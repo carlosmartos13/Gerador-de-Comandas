@@ -1,0 +1,31 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<H1> GERADOR DE COMANDA </H1>
+
+    <div class="card">
+       
+{{app_start}}
+        <section class="details" >
+            
+            <form method="POST" action="/COMANDA">
+            <div>
+                
+               <div class="legenda"><span> Inicio </span> </div><input type="number" name="app_start" value=1 required>
+            </div>
+            <div>
+                <div class="legenda"><span> Fim </span> </div> <input type="number" name="app_end" required >
+            </div>
+
+            <div>
+                <button type="submit"> Gerar Comandas </button>
+            </div>
+
+            </form>
+
+
+        </section>
+    </div>
+
+{% endblock content %}
